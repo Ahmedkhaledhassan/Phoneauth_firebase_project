@@ -24,6 +24,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       e164Key: "");
   @override
   Widget build(BuildContext context) {
+    phoneContraller.selection = TextSelection.fromPosition(
+      TextPosition(
+        offset: phoneContraller.text.length,
+      ),
+    );
     return Scaffold(
       body: SafeArea(
           child: Center(
@@ -69,8 +74,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
               TextFormField(
                 cursorColor: Color.fromARGB(255, 185, 104, 199),
                 controller: phoneContraller,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                onChanged: (value) {
+                  setState(() {
+                    phoneContraller.text = value;
+                  });
+                },
                 decoration: InputDecoration(
                   hintText: "Enter phone number",
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                    color: Colors.grey.shade600,
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: Colors.black12),
@@ -85,6 +102,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onTap: () {
                         showCountryPicker(
                             context: context,
+                            countryListTheme: const CountryListThemeData(
+                                bottomSheetHeight: 550),
                             onSelect: ((value) {
                               setState(() {
                                 selectedCountry = value;
@@ -101,6 +120,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
+                  suffixIcon: phoneContraller.text.length > 9
+                      ? Container(
+                          height: 30,
+                          width: 30,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.green),
+                          child: const Icon(
+                            Icons.done,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        )
+                      : null,
                 ),
               )
             ],
