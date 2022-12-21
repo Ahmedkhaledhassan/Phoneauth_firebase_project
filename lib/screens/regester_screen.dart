@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -9,6 +10,18 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController phoneContraller = TextEditingController();
+
+  Country selectedCountry = Country(
+      phoneCode: "91",
+      countryCode: "IN",
+      e164Sc: 0,
+      geographic: true,
+      level: 1,
+      name: "India",
+      example: "India",
+      displayName: "India",
+      displayNameNoCountryCode: "IN",
+      e164Key: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +81,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   prefixIcon: Container(
                     padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        showCountryPicker(
+                            context: context,
+                            onSelect: ((value) {
+                              setState(() {
+                                selectedCountry = value;
+                              });
+                            }));
+                      },
+                      child: Text(
+                        "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               )
