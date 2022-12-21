@@ -54,12 +54,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               TextFormField(
+                cursorColor: Color.fromARGB(255, 185, 104, 199),
                 controller: phoneContraller,
                 decoration: InputDecoration(
                   hintText: "Enter phone number",
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(color: Colors.black12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.black12),
+                  ),
+                  prefixIcon: Container(
+                    padding: const EdgeInsets.all(8.0),
                   ),
                 ),
               )
