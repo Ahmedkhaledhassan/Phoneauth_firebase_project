@@ -15,7 +15,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 35),
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 3),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
