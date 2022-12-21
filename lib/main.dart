@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: WelcomeScreen(),
+        home: RegisterScreen(),
         title: "flutter_PhoneAuth",
       ),
     );
